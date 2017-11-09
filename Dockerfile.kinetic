@@ -1,0 +1,21 @@
+FROM osrf/ros:kinetic-desktop-full
+
+# Install some basic tools
+RUN apt-get update && apt-get install -y \
+    gosu \
+    ninja-build \
+    build-essential \
+    moreutils \
+    software-properties-common \
+    nano \
+    vim \
+    emacs \
+    curl \
+    python-catkin-tools 
+
+RUN /bin/bash -c "source /opt/ros/$(echo $ROS_DISTRO)/setup.bash && mkdir -p /home/container/ws/src && cd /home/container/ws/src && catkin_init_workspace && cd .. && catkin build"
+
+COPY files/entrypoint.sh /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
