@@ -10,6 +10,7 @@ RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/dow
 
 # Install some basic tools
 RUN apt-get update && apt-get install -y \
+    sudo \
     ninja-build \
     build-essential \
     moreutils \

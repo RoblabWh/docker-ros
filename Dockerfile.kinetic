@@ -2,6 +2,7 @@ FROM osrf/ros:kinetic-desktop-full
 
 # Install some basic tools
 RUN apt-get update && apt-get install -y \
+    sudo \
     gosu \
     ninja-build \
     build-essential \
